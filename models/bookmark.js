@@ -16,4 +16,7 @@ const Bookmark = sequelize.define('Bookmark', {
   }
 });
 
+// 在字段定义后添加关联关系
+Bookmark.belongsTo(require('./user')); // ✅新增此行
+
 module.exports = Bookmark;
