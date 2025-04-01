@@ -110,3 +110,26 @@ body {
   background: white;
   border-radius: 4px;
 }
+
+/* 拖拽样式 */
+.bookmarks-grid {
+  min-height: 100px;
+}
+
+.dragging-ghost {
+  opacity: 0.5;
+  background: #f8f9fa;
+  transform: scale(0.95);
+}
+
+.bookmark {
+  cursor: move;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.bookmark.dragging {
+  z-index: 9999;
+  transform: scale(1.05) rotate(3deg);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
