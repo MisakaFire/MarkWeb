@@ -1,2 +1,0 @@
-#运行转移
-npx sequelize-cli db:migrate 
