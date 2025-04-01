@@ -223,3 +223,28 @@ input[type="file"] {
   margin-top: 10px;
   color: #6c757d;
 }
+
+/* 搜索引擎管理样式 */
+.search-engine-management {
+  margin-top: 40px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.engine-list {
+  margin-top: 15px;
+}
+
+.engine-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 5px 0;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.engine-item img {
+  margin-right: 10px;
+}
