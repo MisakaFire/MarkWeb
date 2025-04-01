@@ -4,3 +4,6 @@ connect-flash express-session bcryptjs
 
 # 书签导入/导出功能依赖
 npm install multer
+
+# 导入进度功能新依赖
+npm install uuid
