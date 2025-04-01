@@ -35,3 +35,38 @@
     </div>
 </body>
 </html>
+<!-- 在容器内添加分类管理区块 -->
+<div class="category-management">
+  <h2>分类管理</h2>
+  
+  <!-- 添加分类表单 -->
+  <form action="/categories" method="POST">
+    <input type="text" name="name" placeholder="分类名称" required>
+    <input type="color" name="color" value="#666666">
+    <button type="submit">创建分类</button>
+  </form>
+
+  <!-- 分类列表 -->
+  <div class="categories-list">
+    <% categories.forEach(category => { %>
+      <div class="category-item" style="border-left: 4px solid <%= category.color %>">
+        <span><%= category.name %></span>
+        <form action="/categories/<%= category.id %>?_method=DELETE" method="POST">
+          <button type="submit">删除</button>
+        </form>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+<!-- 修改书签表单添加分类选择 -->
+<form action="/bookmarks" method="POST">
+  <!-- 原有字段保持不变 -->
+  <select name="CategoryId" required>
+    <option value="">选择分类</option>
+    <% categories.forEach(category => { %>
+      <option value="<%= category.id %>"><%= category.name %></option>
+    <% }) %>
+  </select>
+  <!-- 原有提交按钮 -->
+</form>
