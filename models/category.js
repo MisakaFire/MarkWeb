@@ -22,4 +22,7 @@ Category.addHook('beforeDestroy', async (category) => {
   );
 });
 
+// 在字段定义后添加关联关系
+Category.belongsTo(require('./user')); // ✅新增此行
+
 module.exports = Category;
