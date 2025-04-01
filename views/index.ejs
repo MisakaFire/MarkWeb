@@ -52,13 +52,17 @@
   <% }) %>
 </div>
 
-<!-- 修改书签展示结构 -->
 <% categories.forEach(category => { %>
   <div class="category-section" data-category="<%= category.id %>">
     <h3 style="color: <%= category.color %>"><%= category.name %></h3>
     <div class="bookmarks-grid">
-      <% bookmarks.filter(b => b.CategoryId === category.id).forEach(bookmark => { %>
-        <!-- 原有书签展示代码 -->
+      <% bookmarks
+        .filter(b => b.CategoryId === category.id)
+        .sort((a, b) => a.order - b.order)
+        .forEach(bookmark => { %>
+        <div class="bookmark" data-id="<%= bookmark.id %>">
+          <!-- 原有内容保持不变 -->
+        </div>
       <% }) %>
     </div>
   </div>
