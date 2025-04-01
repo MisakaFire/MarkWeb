@@ -1,0 +1,10 @@
+<!-- 在<head>标签内添加 -->
+<%- include('partials/loading') %>
+
+<!-- 在<body>结束前添加 -->
+<script>
+// 显示全局加载
+const showLoading = () => document.querySelector('.global-loader').style.display = 'flex';
+// 隐藏全局加载
+const hideLoading = () => document.querySelector('.global-loader').style.display = 'none';
+</script>
