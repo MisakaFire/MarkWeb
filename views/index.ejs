@@ -40,3 +40,26 @@
     <script src="/js/search.js"></script>
 </body>
 </html>
+
+<!-- 添加分类筛选 -->
+<div class="category-filter">
+  <button class="active" data-category="all">全部</button>
+  <% categories.forEach(category => { %>
+    <button style="border-color: <%= category.color %>" 
+            data-category="<%= category.id %>">
+      <%= category.name %>
+    </button>
+  <% }) %>
+</div>
+
+<!-- 修改书签展示结构 -->
+<% categories.forEach(category => { %>
+  <div class="category-section" data-category="<%= category.id %>">
+    <h3 style="color: <%= category.color %>"><%= category.name %></h3>
+    <div class="bookmarks-grid">
+      <% bookmarks.filter(b => b.CategoryId === category.id).forEach(bookmark => { %>
+        <!-- 原有书签展示代码 -->
+      <% }) %>
+    </div>
+  </div>
+<% }) %>
