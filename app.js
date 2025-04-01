@@ -1,3 +1,6 @@
+// 在app.js顶部添加
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 const express = require('express');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
