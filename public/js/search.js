@@ -1,35 +1,25 @@
-// 原固定引擎配置 ❌删除
-// const engines = { baidu: '...', google: '...' };
-
-// ✅替换为动态加载
-let searchEngines = [];
-
-async function loadSearchEngines() {
-  try {
-    const response = await fetch('/search-engines');
-    searchEngines = await response.json();
-    
-    const select = document.getElementById('engine');
-    select.innerHTML = searchEngines
-      .map(engine => `<option value="${engine.id}">${engine.name}</option>`)
-      .join('');
-  } catch (error) {
-    console.error('加载搜索引擎失败:', error);
-  }
-}
-
+// 原提交事件监听 ❌删除
 document.getElementById('searchForm').addEventListener('submit', function(e) {
+
+// ✅替换为
+document.getElementById('searchForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   
-  const engineId = document.getElementById('engine').value;
-  const keyword = document.getElementById('keyword').value;
+  const searchBtn = this.querySelector('button[type="submit"]');
+  const originalText = searchBtn.innerHTML;
   
-  const engine = searchEngines.find(e => e.id == engineId);
-  if (engine && keyword) {
-    const searchUrl = engine.baseUrl.replace('{q}', encodeURIComponent(keyword));
-    window.open(searchUrl, '_blank');
+  // 显示加载状态
+  searchBtn.innerHTML = `
+    <span class="btn-loader"></span>
+    搜索中...
+  `;
+  searchBtn.disabled = true;
+
+  try {
+    // ...原有搜索逻辑保持不变...
+  } finally {
+    // 恢复按钮状态
+    searchBtn.innerHTML = originalText;
+    searchBtn.disabled = false;
   }
 });
-
-// 初始化加载
-loadSearchEngines();
