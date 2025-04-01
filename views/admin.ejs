@@ -7,7 +7,17 @@
 <body>
     <div class="container">
         <h1>书签管理</h1>
-        
+
+<!-- 在表单区域顶部添加 -->
+<div class="import-export-box">
+  <a href="/bookmarks/export" class="btn">导出书签</a>
+  
+  <form action="/bookmarks/import" method="POST" enctype="multipart/form-data">
+    <input type="file" name="bookmarksFile" accept=".json" required>
+    <button type="submit">导入书签</button>
+  </form>
+</div>
+
         <!-- 添加表单 -->
         <form action="/bookmarks" method="POST">
             <input type="text" name="title" placeholder="标题" required>
