@@ -1,13 +1,54 @@
-<!-- 在<head>标签内添加 -->
-<%- include('partials/loading') %>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || '智能书签导航' %></title>
+    
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- 字体图标 -->
+    <link href="https://cdn.example.com/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 全局加载指示器 -->
+    <%- include('partials/loading') %>
 
-<!-- 在<body>结束前添加 -->
-<script>
-// 显示全局加载
-const showLoading = () => document.querySelector('.global-loader').style.display = 'flex';
-// 隐藏全局加载
-const hideLoading = () => document.querySelector('.global-loader').style.display = 'none';
-</script>
-<!-- 在<body>结束前添加 -->
-<%- include('partials/float-menu') %>
-<script src="/js/menu.js"></script>
+    <!-- 头部导航 -->
+    <%- include('partials/header') %>
+
+    <!-- 谷歌式浮动菜单 -->
+    <%- include('partials/float-menu') %>
+
+    <!-- 主要内容容器 -->
+    <div class="main-container">
+        <%- body %>
+    </div>
+
+    <!-- 全局脚本 -->
+    <script>
+        // 加载控制函数
+        const showLoading = () => document.querySelector('.global-loader').style.display = 'flex';
+        const hideLoading = () => document.querySelector('.global-loader').style.display = 'none';
+        
+        // 用户偏好存储
+        const storePreference = (key, value) => {
+            localStorage.setItem(`pref_${key}`, value);
+        };
+    </script>
+
+    <!-- 功能脚本 -->
+    <script src="/js/clock.js"></script>          <!-- 数字时钟 -->
+    <script src="/js/search.js"></script>         <!-- 搜索功能 -->
+    <script src="/js/menu.js"></script>           <!-- 浮动菜单 -->
+    <script src="/js/bookmarks.js"></script>      <!-- 书签交互 -->
+    <script src="/js/import.js"></script>         <!-- 导入功能 -->
+    <script src="/js/category.js"></script>       <!-- 分类功能 -->
+    
+    <!-- 生产环境优化 -->
+    <% if (process.env.NODE_ENV === 'production') { %>
+    <script src="/js/bundle.min.js"></script>     <!-- 打包后的合并脚本 -->
+    <% } %>
+</body>
+</html>
