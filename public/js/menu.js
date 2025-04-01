@@ -16,6 +16,35 @@ document.addEventListener('click', (e) => {
   }
 });
 
+// 在点击事件处理中新增
+trigger.addEventListener('click', (e) => {
+  const position = e.target.closest('a')?.dataset.position || 'auto';
+  adjustMenuPosition(position); // 📍新增函数调用
+});
+
+// 📍新增方向适配函数
+function adjustMenuPosition(preferredPosition) {
+  const triggerRect = trigger.getBoundingClientRect();
+  const viewportWidth = window.innerWidth;
+  
+  // 自动判断逻辑
+  if (preferredPosition === 'auto') {
+    const spaceRight = viewportWidth - triggerRect.right;
+    const spaceLeft = triggerRect.left;
+    preferredPosition = spaceRight > spaceLeft ? 'right' : 'left';
+  }
+
+  items.classList.remove('left', 'right');
+  items.classList.add(preferredPosition);
+  
+  // 移动端强制居中
+  if (window.innerWidth <= 768) {
+    items.style.left = '50%';
+    items.style.right = 'auto';
+    items.style.transform = 'translateX(-50%)';
+  }
+}
+
 // 移动端触摸支持
 let touchStartY = 0;
 trigger.addEventListener('touchstart', (e) => {
