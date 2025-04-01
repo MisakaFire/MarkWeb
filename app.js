@@ -27,3 +27,6 @@ sequelize.sync().then(() => {
     console.log('Server is running on port 3000');
   });
 });
+
+// 在现有路由配置后添加
+app.use('/categories', require('./routes/categories'));
