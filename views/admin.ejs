@@ -48,7 +48,35 @@
 <!-- 在容器内添加分类管理区块 -->
 <div class="category-management">
   <h2>分类管理</h2>
+
+<!-- 在分类管理后添加 -->
+<div class="search-engine-management">
+  <h2>搜索引擎管理</h2>
   
+  <!-- 添加表单 -->
+  <form action="/search-engines" method="POST">
+    <input type="text" name="name" placeholder="引擎名称" required>
+    <input type="url" name="baseUrl" placeholder="搜索URL（包含{q}占位符）" required>
+    <input type="url" name="icon" placeholder="图标URL">
+    <button type="submit">添加引擎</button>
+  </form>
+
+  <!-- 引擎列表 -->
+  <div class="engine-list">
+    <% searchEngines.forEach(engine => { %>
+      <div class="engine-item">
+        <img src="<%= engine.icon %>" width="20" alt="<%= engine.name %>">
+        <span><%= engine.name %></span>
+        <% if(!engine.isDefault) { %>
+          <form action="/search-engines/<%= engine.id %>?_method=DELETE" method="POST">
+            <button type="submit">删除</button>
+          </form>
+        <% } %>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
   <!-- 添加分类表单 -->
   <form action="/categories" method="POST">
     <input type="text" name="name" placeholder="分类名称" required>
