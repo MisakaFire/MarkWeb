@@ -24,6 +24,9 @@
             </form>
         </div>
 
+<!-- 在<head>标签后添加 -->
+<%- include('partials/header') %> <!-- ✅新增此行 -->
+
         <!-- 书签展示 -->
         <div class="bookmarks-grid">
             <% bookmarks.forEach(bookmark => { %>
