@@ -1,0 +1,12 @@
+<header>
+  <div class="user-info">
+    <% if (user) { %>
+      <span>欢迎，<%= user.email %></span>
+      <a href="/logout">退出</a>
+      <a href="/admin">管理</a>
+    <% } else { %>
+      <a href="/login">登录</a>
+      <a href="/register">注册</a>
+    <% } %>
+  </div>
+</header>
