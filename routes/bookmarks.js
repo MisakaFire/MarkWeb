@@ -24,4 +24,21 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// 书签排序
+router.put('/sort', async (req, res) => {
+  try {
+    const { orders } = req.body;
+    
+    await Promise.all(
+      orders.map(({ id, order }) => 
+        Bookmark.update({ order }, { where: { id } })
+    );
+    
+    res.sendStatus(200);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('排序更新失败');
+  }
+});
+
 module.exports = router;
