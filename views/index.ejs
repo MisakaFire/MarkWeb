@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>智能书签导航</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 数字时钟 -->
+        <div id="clock" class="clock"></div>
+        
+        <!-- 搜索框 -->
+        <div class="search-container">
+            <form id="searchForm">
+                <select id="engine">
+                    <option value="baidu">百度</option>
+                    <option value="google">谷歌</option>
+                    <option value="sogou">搜狗</option>
+                    <option value="onion">洋葱</option>
+                    <option value="duckduckgo">鸭鸭</option>
+                </select>
+                <input type="text" id="keyword" placeholder="输入搜索内容">
+                <button type="submit">搜索</button>
+            </form>
+        </div>
+
+        <!-- 书签展示 -->
+        <div class="bookmarks-grid">
+            <% bookmarks.forEach(bookmark => { %>
+                <a href="<%= bookmark.url %>" class="bookmark">
+                    <img src="<%= bookmark.logo %>" alt="<%= bookmark.title %>">
+                    <h3><%= bookmark.title %></h3>
+                    <p><%= bookmark.description %></p>
+                </a>
+            <% }) %>
+        </div>
+    </div>
+    
+    <script src="/js/clock.js"></script>
+    <script src="/js/search.js"></script>
+</body>
+</html>
