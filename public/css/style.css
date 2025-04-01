@@ -319,7 +319,6 @@ input[type="file"] {
 .menu-items {
   position: absolute;
   bottom: 50px;
-  right: 0;
   width: 120px;
   background: #fff;
   border-radius: 4px;
@@ -344,4 +343,42 @@ input[type="file"] {
 
 .menu-items a:hover {
   background: #f8f9fa;
+}
+
+/* 新增：方向适配 */
+.menu-items.left {
+  right: auto;
+  left: 0;
+}
+
+.menu-items.right {
+  right: 0;
+  left: auto;
+}
+
+/* 修改：图标支持 */
+.menu-items a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-items i {
+  width: 16px;
+  text-align: center;
+}
+
+/* 新增：移动端适配 */
+@media (max-width: 768px) {
+  .menu-items {
+    width: 160px;
+    bottom: 60px;
+  }
+  
+  .menu-items.left,
+  .menu-items.right {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
 }
