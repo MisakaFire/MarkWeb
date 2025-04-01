@@ -48,6 +48,9 @@ app.use('/', require('./routes/index'));
 app.use('/bookmarks', require('./routes/bookmarks'));
 app.use('/admin', require('./routes/admin'));
 
+// 在路由配置区域添加
+app.use('/search-engines', require('./routes/search-engines')); // 📍新增此行
+
 // 在现有路由配置前添加 ✅新增
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) return next();
