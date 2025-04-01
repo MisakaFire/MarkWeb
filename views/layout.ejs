@@ -8,3 +8,6 @@ const showLoading = () => document.querySelector('.global-loader').style.display
 // 隐藏全局加载
 const hideLoading = () => document.querySelector('.global-loader').style.display = 'none';
 </script>
+<!-- 在<body>结束前添加 -->
+<%- include('partials/float-menu') %>
+<script src="/js/menu.js"></script>
