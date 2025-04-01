@@ -159,3 +159,34 @@ body {
   background: #ffebee;
   color: #c62828;
 }
+
+/* 导入导出样式 */
+.import-export-box {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.import-export-box form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn {
+  padding: 8px 15px;
+  background: #28a745;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+input[type="file"] {
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
