@@ -56,6 +56,15 @@
     <button type="submit">创建分类</button>
   </form>
 
+<!-- 在导入表单后添加进度容器 -->
+<div id="import-progress" style="display: none;">
+  <div class="progress-bar">
+    <div class="progress"></div>
+  </div>
+  <div class="progress-text">0%</div>
+  <div class="status-message"></div>
+</div>
+
   <!-- 分类列表 -->
   <div class="categories-list">
     <% categories.forEach(category => { %>
