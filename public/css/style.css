@@ -133,3 +133,29 @@ body {
   transform: scale(1.05) rotate(3deg);
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
+
+/* 用户相关样式 */
+.user-info {
+  float: right;
+  margin: 10px;
+  padding: 8px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 4px;
+}
+
+.user-info a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.alert {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+}
+
+.alert.error {
+  background: #ffebee;
+  color: #c62828;
+}
