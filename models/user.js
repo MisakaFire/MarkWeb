@@ -21,4 +21,10 @@ User.prototype.validPassword = function(password) {
   return bcrypt.compareSync(password, this.password);
 };
 
+User.prototype.updatePreferences = function(key, value) {
+  const prefs = this.prefs || {};
+  prefs[key] = value;
+  return this.update({ prefs });
+};
+
 module.exports = User;
