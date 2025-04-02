@@ -1,17 +1,9 @@
 <div class="menu-items">
-  <a href="/settings" data-position="left">
-    <i class="fas fa-cog"></i>
-    <span>设置</span>
-  </a>
-  <a href="/night-mode" data-position="right">
-    <i class="fas fa-moon"></i>
-    <span>夜间模式</span>
-  </a>
-  ...
-</div>
-
-<div class="menu-items">
-  <!-- 带二级菜单的示例项 -->
+User.prototype.updatePreferences = function(key, value) {
+  const prefs = this.prefs || {};
+  prefs[key] = value;
+  return this.update({ prefs });
+};  <!-- 带二级菜单的示例项 -->
   <div class="menu-item has-submenu">
     <a href="#">
       <i class="fas fa-cog"></i>
