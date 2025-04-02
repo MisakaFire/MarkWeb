@@ -382,3 +382,43 @@ input[type="file"] {
     transform: translateX(-50%);
   }
 }
+
+/* 二级菜单支持 */
+.menu-item {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  min-width: 160px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.menu-item:hover .submenu {
+  display: block;
+}
+
+.submenu a {
+  padding: 10px 15px;
+}
+
+.submenu-arrow {
+  margin-left: auto;
+  font-size: 0.8em;
+  opacity: 0.6;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .submenu {
+    left: 0;
+    right: 0;
+    position: static;
+    box-shadow: none;
+  }
+}
