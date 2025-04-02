@@ -1,3 +1,37 @@
+// 在文件顶部新增
+let isMuted = localStorage.getItem('muteSound') === 'true';
+const clickSound = new Audio('/sounds/click.mp3');
+
+// 修改点击事件处理
+trigger.addEventListener('click', (e) => {
+  playSound(); // 播放音效
+  // ...原有逻辑...
+});
+
+// 新增二级菜单处理
+document.querySelectorAll('.has-submenu').forEach(item => {
+  item.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768) {
+      item.classList.toggle('open');
+      e.preventDefault();
+    }
+  });
+});
+
+// 新增音效控制函数
+function playSound() {
+  if (!isMuted) {
+    clickSound.currentTime = 0;
+    clickSound.play().catch(() => { /* 处理自动播放限制 */ });
+  }
+}
+
+// 新增偏好同步
+function loadPreferences() {
+  const direction = localStorage.getItem('menuDirection') || 'auto';
+  document.documentElement.style.setProperty('--menu-direction', direction);
+}
+
 // 菜单触发逻辑
 const menu = document.querySelector('.float-menu');
 const trigger = menu.querySelector('.menu-trigger');
