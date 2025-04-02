@@ -1,0 +1,33 @@
+<div class="backup-management">
+  <h2>云备份设置</h2>
+  
+  <!-- WebDAV配置表单 -->
+  <form action="/backup/config" method="POST">
+    <select name="provider">
+      <option value="webdav">WebDAV</option>
+      <option value="dropbox">Dropbox</option>
+    </select>
+    <input type="url" name="endpoint" placeholder="服务器地址" required>
+    <input type="text" name="username" placeholder="用户名" required>
+    <input type="password" name="password" placeholder="密码" required>
+    <select name="frequency">
+      <option value="daily">每天</option>
+      <option value="weekly">每周</option>
+    </select>
+    <button type="submit">保存配置</button>
+    <button type="button" id="testConnection">测试连接</button>
+  </form>
+
+  <!-- 备份历史 -->
+  <div class="backup-history">
+    <h3>最近备份记录</h3>
+    <ul>
+      <% backups.forEach(backup => { %>
+        <li><%= backup.lastBackup %> - <%= backup.status %></li>
+      <% }) %>
+    </ul>
+    <form action="/backup/trigger" method="POST">
+      <button type="submit">立即备份</button>
+    </form>
+  </div>
+</div>
