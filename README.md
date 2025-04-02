@@ -7,3 +7,6 @@ npm install multer
 
 # 导入进度功能新依赖
 npm install uuid
+
+# Webdav功能支持依赖
+npm install webdav node-schedule
